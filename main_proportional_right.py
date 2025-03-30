@@ -5,11 +5,10 @@ from functools import partial
 from time import time
 from scipy.integrate import quad
 import numpy as np
-# from numba import njit
 from proportional_functions_opt import Psi
+from common_functions import calculate_hat_pdf_exp
 
 
-# @njit
 def int_Psi_function(
     n: int,
     c: list,
@@ -68,23 +67,6 @@ def calc_integral(
         s
     )
     return quad(int_Psi_function_instance, 0, np.inf)[0]
-
-
-def pdf_exp(lambd: float, x: float):
-    return lambd * np.exp(- lambd * x)
-
-
-def int_hat_pdf_exp_function(s: float, lambd: float, x: float):
-    return np.exp(- s * x) * pdf_exp(lambd=lambd, x=x)
-
-
-def calculate_hat_pdf_exp(s: float, lambd: float) -> float:
-    int_hat_pdf_exp_function_instance = partial(
-        int_hat_pdf_exp_function,
-        s,
-        lambd
-    )
-    return quad(int_hat_pdf_exp_function_instance, 0, np.inf)[0]
 
 
 if __name__ == "__main__":
