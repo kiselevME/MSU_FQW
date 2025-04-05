@@ -102,12 +102,12 @@ if __name__ == "__main__":
     for i in range(config["model_settings"]["n"] + 1):
         denominator += config["model_settings"]["c"][i] * config["s"][i]
         if i == 0:
-            int_value = calculate_hat_pdf_exp(s=config["s"][0], lambd=config["model_settings"]["poisson_rate"][0])
+            int_value = calculate_hat_pdf_exp(s=config["s"][0], lambd=config["model_settings"]["claims_rate"][0])
         else:
             int_value = calculate_hat_pdf_exp(
                 s=config["s"][0] * (1 - config["model_settings"]["alpha"][i-1]) +
                 config["s"][i] * config["model_settings"]["alpha"][i-1],
-                lambd=config["model_settings"]["poisson_rate"][i]
+                lambd=config["model_settings"]["claims_rate"][i]
             )
         denominator += config["model_settings"]["poisson_rate"][i] * (int_value - 1)
 

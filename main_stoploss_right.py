@@ -98,7 +98,7 @@ def int_laplace_Psi_function(
         s=s
     )
     exponent = np.exp(-s[i] * x)
-    pdf = pdf_exp(lambd=poisson_rate[i], x=x)
+    pdf = pdf_exp(lambd=claims_rate[i], x=x)
 
     return laplace_bar_Psi[0] * exponent * pdf
 
@@ -196,7 +196,7 @@ if __name__ == "__main__":
                 seed_offset=seed_offset,
                 s=s
             )
-            hat_pdf = calculate_hat_pdf_exp(s=s[0], lambd=poisson_rate[i], lower_limit=b[i-1])
+            hat_pdf = calculate_hat_pdf_exp(s=s[0], lambd=claims_rate[i], lower_limit=b[i-1])
 
             numerator -= poisson_rate[i] * (int_value - exponent * laplace_bar_Psi * hat_pdf)
 
@@ -205,7 +205,7 @@ if __name__ == "__main__":
     for i in range(n + 1):
         denominator += c[i] * s[i]
         if i == 0:
-            int_value = calculate_hat_pdf_exp(s=s[0], lambd=poisson_rate[0])
+            int_value = calculate_hat_pdf_exp(s=s[0], lambd=claims_rate[0])
             denominator += poisson_rate[0] * (int_value - 1)
         else:
             denominator -= poisson_rate[i]
