@@ -1,7 +1,23 @@
 # MSU_FQW
 Final qualifying work repository
 
-## Commands for running scripts:
-### Proportional case:
-- calculation left side of proposition 1: `python main_proportional_left.py --config=./configs/proportional/config_1.json --n_simulations=10 --max_time=100.0 --seed_offset=0`;
-- calculation right side of proposition 1: `python main_proportional_right.py --config=./configs/proportional/config_1.json --n_simulations=10 --max_time=100.0 --seed_offset=0`.
+## Proportional case (n = 1):
+The code can be found in:
+    - `proportional_functions_opt.py`
+    - `main_proportional_left.py`
+    - `main_proportional_right.py`
+
+#### Commands for running scripts:
+- calculation left side of proposition 1: `bash script_proportional_left.bash`;
+- calculation right side of proposition 1: `bash script_proportional_right.bash`.
+
+You can also run single calculations, the commands for this can be found in the bash scripts above.
+
+
+## Stop-loss case (n = 1):
+The code can be found in:
+    - `main_stoploss_left.py`
+    - `main_stoploss_right.py`
+    - `stoploss_functions_opt.py`
+
+The code for the stop-loss case may contain bugs. At startup, it is recommended to check the correctness of the calculations.
